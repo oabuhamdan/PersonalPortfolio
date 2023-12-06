@@ -1,0 +1,37 @@
+[
+  {
+    "model": "home.ProjectType",
+    "pk": 1,
+    "fields": {
+      "type": "Freelance"
+    }
+  },
+  {
+    "model": "home.ProjectType",
+    "pk": 2,
+    "fields": {
+      "type": "Business"
+    }
+  },
+  {
+    "model": "home.ProjectType",
+    "pk": 3,
+    "fields": {
+      "type": "Research"
+    }
+  },
+  {
+    "model": "home.ProjectType",
+    "pk": 4,
+    "fields": {
+      "type": "Personal"
+    }
+  },
+  {
+    "model": "home.ProjectType",
+    "pk": 5,
+    "fields": {
+      "type": "Hidden"
+    }
+  }
+]

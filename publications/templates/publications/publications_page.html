@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block side %}
+    <h2>{{ page.title}}</h2>
+    <div class="side-subpanel hide_small_screen"></div>
+{% endblock %}
+{% block content %}
+    {% if page.conferences.all.count > 0 %}
+        <div class="separator grouper">Conference Papers</div>
+    {% endif %}
+    {% for publication in page.conferences.all %}
+        {% include "publications/conference.html" with publication=publication %}
+    {% endfor %}
+
+    {% if page.journals.all.count > 0 %}
+        <div class="separator grouper">Journal Papers</div>
+    {% endif %}
+    {% for publication in page.journals.all %}
+        {% include "publications/journal.html" with publication=publication %}
+    {% endfor %}
+    {% if page.book_chapters.all.count > 0 %}
+        <div class="separator grouper">Book Chapters</div>
+    {% endif %}
+    {% for publication in page.book_chapters.all %}
+        {% include "publications/chapter.html" with publication=publication %}
+    {% endfor %}
+    {% if page.books.all.count > 0 %}
+        <div class="separator grouper">Books</div>
+    {% endif %}
+    {% for publication in page.books.all %}
+        {% include "publications/book.html" with publication=publication %}
+    {% endfor %}
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+        $('.authors').each(function (i, authors) {
+            authors.innerHTML = authors.innerText.replace("{{ page.name_as_in_author }}", '<b>' + "{{ page.name_as_in_author }}" + '</b>');
+        });
+
+        function copy(target) {
+            setTimeout(function () {
+                $(target).prop('disabled', false);
+                $(target).html("Copy")
+            }, 5000);
+            let text = $(target).parent().parent().find(".hljs").text().trim()
+            navigator.clipboard.writeText(text);
+            $(target).html("Copied!")
+            $(target).prop('disabled', true);
+        }
+
+        function download(target) {
+            let text = $(target).parent().parent().find(".hljs").text().trim()
+            const a = document.createElement('a')
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8;'})
+            a.setAttribute('href', URL.createObjectURL(blob))
+            a.setAttribute('download', "citation.bib")
+            a.click()
+            document.body.removeChild(element);
+        }
+
+    </script>
+{% endblock %}

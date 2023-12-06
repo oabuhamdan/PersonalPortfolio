@@ -1,0 +1,82 @@
+[
+  {
+    "model": "home.supportedIcon",
+    "pk": 1,
+    "fields": {
+      "name": "facebook",
+      "html_class": "bi bi-facebook"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 2,
+    "fields": {
+      "name": "twitter",
+      "html_class": "bi bi-twitter"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 3,
+    "fields": {
+      "name": "github",
+      "html_class": "bi bi-github"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 4,
+    "fields": {
+      "name": "email",
+      "html_class": "bi bi-envelope"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 5,
+    "fields": {
+      "name": "whatsapp",
+      "html_class": "bi bi-whatsapp"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 6,
+    "fields": {
+      "name": "google-scholar",
+      "html_class": "bi bi-mortarboard-fill"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 7,
+    "fields": {
+      "name": "instagram",
+      "html_class": "bi bi-instagram"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 8,
+    "fields": {
+      "name": "telephone",
+      "html_class": "bi bi-telephone"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 9,
+    "fields": {
+      "name": "linkedin",
+      "html_class": "bi bi-linkedin"
+    }
+  },
+  {
+    "model": "home.supportedIcon",
+    "pk": 10,
+    "fields": {
+      "name": "location",
+      "html_class": "bi bi-geo-alt"
+    }
+  }
+]

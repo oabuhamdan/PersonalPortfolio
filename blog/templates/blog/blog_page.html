@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+
+{% block side_outer %}
+{% endblock %}
+
+{% block content %}
+    <div class="h-100 pb-4">
+        {% image page.cover_image fill-1000x300-c100 class="blog_image" itemprop="image" %}
+        <div class="box">
+            <h2>{{ page.title }}</h2>
+            {% for tag in page.tags.all %}
+                <a class="my_badge light_badge" href="{% pageurl page.get_parent %}?tag={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+            <hr>
+            <div class="blog-text">
+                {{ page.body|richtext }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+{% load extra_tags %}
+{% block side %}
+    <h2>{{ page.title }}</h2>
+    <div class="side-subpanel hide_small_screen"></div>
+{% endblock %}
+{% block content %}
+    {% regroup page.projects.all by year as projects_by_year %}
+    {% for projects in projects_by_year %}
+        <div class="separator grouper">{{ projects.grouper }}</div>
+        {% for project in projects.list %}
+            <div class="pub-list-item p-2" itemscope="">
+                <h4 class="title1">
+                    {{ project.project_title }}
+                </h4>
+                <div class="tags">
+                {% if project.project_type|cut:" " != "Hidden" %}
+                        <span class="my_badge tag_badge">{{ project.project_type }}</span>
+                    {% endif %}
+                    {% for tag in project.tags|get_semi_colon_sep_list %}
+                        <span class="my_badge light_badge">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <div class="title2 pt-1 pb-1">
+                    {{ project.brief }}
+                </div>
+                <div>
+                    {% if project.description %}
+                        <button type="button" class="btn btn-outline-primary my-1 mr-1 btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#conf_{{ forloop.counter }}_description">
+                            Description
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="conf_{{ forloop.counter }}_description" tabindex="-1"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title fs-5">Project Description</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-justify">
+                                        {{ project.description | richtext }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if project.demo %}
+                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="{{ project.demo }}"
+                           target="_blank" rel="noopener">Demo</a>
+                    {% endif %}
+                    {% if project.code %}
+                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="{{ project.code }}"
+                           target="_blank"
+                           rel="noopener">Code</a>
+                    {% endif %}
+                    {% if project.video %}
+                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="{{ project.video }}"
+                           target="_blank" rel="noopener">Video</a>
+                    {% endif %}
+                    {% if project.slides %}
+                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="{{ project.slides.url }}"
+                           target="_blank" rel="noopener">Slides</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock content %}

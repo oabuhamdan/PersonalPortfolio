@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+{% load extra_tags %}
+
+
+{% block side_outer %}
+    {% if page.html_side_code %}
+        <div class="ps-3 pb-3 pe-3 col-12 col-lg-4 text-center">
+            {% block side %}
+                {{ page.html_side_code|safe }}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
+{% block extra_css %}
+    <style>
+        {{ page.css_code|safe }}
+    </style>
+{% endblock %}
+{% block content %}
+    {{ page.html_main_code|safe }}
+{% endblock content %}
+{% block extra_js %}
+    <script>
+        {{ page.js_code|safe }}
+    </script>
+{% endblock %}

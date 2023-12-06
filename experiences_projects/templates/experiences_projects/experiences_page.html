@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load extra_tags %}
+
+{% block side %}
+    <h2>{{ page.title }}</h2>
+    <div class="side-subpanel hide_small_screen"></div>
+{% endblock %}
+{% block content %}
+    {% get_today as today %}
+    {% for work in page.work.all %}
+        <div class="pub-list-item">
+            <h3 class="grouper title1 pt-2">{{ work.title }}</h3>
+            {% if work.main_skills %}
+                <div class="tags">
+                    {% for skill in  work.main_skills|get_semi_colon_sep_list %}
+                        <span class="my_badge light_badge">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="title2 pt-1 pb-1">
+                <span>{{ work.company_name }}</span>
+                {% if work.employment_type|cut:" " != "Hidden"%}
+                    &middot;
+                    <span>{{ work.employment_type }}</span>
+                {% endif %}
+            </div>
+            <div class="title2 pt-2 pb-2 font-italic">
+                {{ work.start_date|date:page.date_format}} -
+                {% if work.still_working_here %}
+                    Present
+                {% else %}
+                    {{ work.end_date|date:page.date_format}}
+                {% endif %}
+            </div>
+            {% if work.description %}
+                <button type="button" class="btn-block btn btn-outline-primary my-1 mr-1 btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#conf_{{ forloop.counter }}_description">
+                    Description
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="conf_{{ forloop.counter }}_description" tabindex="-1"
+                     aria-hidden="true">
+                    <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title fs-5">Description</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-justify">
+                                {{ work.description|richtext }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock content %}

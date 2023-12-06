@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+{% load extra_tags %}
+
+{% block side %}
+    <h2>{{ page.title }}</h2>
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% if page.email %}
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                    <span>
+                        <i class="{% social_media_icons "email" %}" style="font-size: 20px"></i>
+                    </span>
+                        <span class="h5">{{ page.email }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if page.phone %}
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                    <span>
+                        <i class="{% social_media_icons "telephone" %}" style="font-size: 20px"></i>
+                    </span>
+                        <span class="h5">{{ page.phone }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if page.location %}
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                    <span>
+                        <i class="{% social_media_icons "location" %}" style="font-size: 20px"></i>
+                    </span>
+                        <span class="h5">{{ page.location }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% for contact in page.extra_contact.all %}
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                    <span>
+                        <i class="{% social_media_icons icon %}" style="font-size: 20px"></i>
+                    </span>
+                        <span class="h5">{{ page.value }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    <p style="text-align: center">
+        &copy;
+        <script>document.write(new Date().getFullYear())</script>
+        {{ current_site.root_page.title }}; Created Using Wagtail CMS By
+        <a href="https://oabuhamdan.com">Osama Abu Hamdan</a>
+    </p>
+{% endblock %}

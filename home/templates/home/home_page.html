@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+{% load extra_tags %}
+
+{% block side %}
+    <div class="profile">
+        {% image page.image fill-800x800-c100 class="portrait" itemprop="image" alt="Avatar" %}
+        <div class="portrait-title"><h2 itemprop="name">{{ page.name }}</h2>
+            <h3 itemprop="jobTitle">{{ page.affiliation }}</h3>
+        </div>
+        <ul class="network-icon" aria-hidden="true">
+            {% for sm in page.socialmedia.all %}
+                <li><a itemprop="sameAs" href="{{ sm.url }}" target="_blank"
+                       rel="noopener"><i class="{% social_media_icons sm.name %} big-icon"></i></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if page.about %}
+        <h4 class="column_header">About</h4>
+        {{ page.about | richtext }}
+    {% endif %}
+    <div class="row">
+        {% if page.interests.all %}
+            <div class="col-md-6"><h5 class="column_header">Interests</h5>
+                <ul class="ul-edu fa-ul">
+                    {% for item in page.interests.all %}
+                        <li>- {{ item.interest }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if page.education.all %}
+            <div class="col-md-6"><h5 class="column_header">Education</h5>
+                <ul class="ul-edu fa-ul">
+                    {% for item in page.education.all %}
+                        <li>
+                            <div class="description">
+                                <p class="course">{{ item.title }}</p>
+                                <p class="education_dates">{{ item.start_year }} - {% if item.in_progress %}Present{% else %}{{ item.grad_year }}{% endif %}</p>
+                                <p class="institution">{{ item.university }} - {{ item.location }}</p>
+                                <p class="notes">{{ item.notes }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

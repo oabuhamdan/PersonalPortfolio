@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+{% load extra_tags %}
+
+{% block side %}
+    <h2>{{ page.title }}</h2>
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for item in page.item_list.all %}
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                        <span style="color: gray; font-size: 0.8rem">{{ item.date|date:page.date_format }}</span>
+                        <span class="h6">{{ item.text|richtext }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

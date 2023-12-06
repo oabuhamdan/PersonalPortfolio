@@ -1,0 +1,84 @@
+{% load wagtailcore_tags %}
+
+<div>
+    {% if publication.abstract %}
+        <button type="button" class="btn btn-outline-primary my-1 mr-1 btn-sm" data-bs-toggle="modal"
+                data-bs-target="#{{ type }}_{{ forloop.counter }}_abstract">
+            Abstract
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="{{ type }}_{{ forloop.counter }}_abstract" tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5">Abstract</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-justify">
+                        {{ publication.abstract }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if publication.pdf %}
+        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="/pdf/plover.pdf"
+           target="_blank" rel="noopener">PDF</a>
+    {% endif %}
+    {% if publication.bib %}
+        <button type="button" class="btn btn-outline-primary my-1 mr-1 btn-sm"
+                data-bs-toggle="modal" data-bs-target="#conf_{{ forloop.counter }}_bib">
+            Cite
+        </button>
+        <div class="modal fade" id="conf_{{ forloop.counter }}_bib" tabindex="-1"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5" id="exampleModalLabel">Cite</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="hljs">
+                            {{ publication.bib }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" onclick="copy(this)">
+                            <i class="bi bi-clipboard"></i> Copy
+                        </button>
+                        <button type="button" class="btn btn-outline-dark" onclick="download(this)">
+                            <i class="bi bi-download"></i>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if publication.code %}
+        <a class="btn btn-outline-primary my-1 mr-1 btn-sm"
+           href="https://github.com/hku-systems/plover" target="_blank"
+           rel="noopener">Code</a>
+    {% endif %}
+    {% if publication.slides %}
+        <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="{{ publication.slides.url }}"
+           target="_blank" rel="noopener">Slides</a>
+    {% endif %}
+
+    {% if publication.video %}
+        <a class="btn btn-outline-primary my-1 mr-1 btn-sm"
+           href="https://www.usenix.org/conference/nsdi18/presentation/wang" target="_blank"
+           rel="noopener">Video</a>
+    {% endif %}
+    {% if publication.doi %}
+        <a class="btn btn-outline-primary my-1 mr-1 btn-sm"
+           href="{{ publication.doi }}"
+           target="_blank"
+           rel="noopener">DOI</a>
+    {% endif %}
+</div>

@@ -1,0 +1,26 @@
+{% load wagtailcore_tags %}
+
+
+<div class="pub-list-item p-2" itemscope=""
+     itemtype="http://schema.org/CreativeWork">
+    <h4 class="title1">
+        {{ publication.publication_title }}
+    </h4>
+    <span class="title2 pt-1 pb-1">
+        {% if publication.custom_styled_info %}
+            {{ publication.custom_styled_info|richtext }}
+        {% endif %}
+        {% if not  publication.custom_styled_info %}
+            {% spaceless %}
+                <span class="authors">{{ publication.authors }}</span>
+                {% if publication.publisher %}
+                    <span>. {{ publication.publisher }}</span>
+                {% endif %}
+                {% if publication.publication_date %}
+                    <span>, {{ publication.publication_date|date:"M Y" }}</span>
+                {% endif %}
+            {% endspaceless %}
+        {% endif %}
+    </span>
+    {% include "publications/buttons.html" with publication=publication type="book" %}
+</div>

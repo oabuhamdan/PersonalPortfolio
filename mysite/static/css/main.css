@@ -1,0 +1,319 @@
+
+html,
+body {
+    height: 100%;
+    font-size: 1.15rem;
+}
+
+.column_header {
+    font-weight: 700;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.richtext-image.left {
+    float: right;
+    height: auto;
+    width: 50%;
+    padding-right: 10px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.richtext-image.right {
+    float: right;
+    height: auto;
+    width: 50%;
+    padding-left: 10px;
+}
+
+.pub-list-item {
+    line-height: 1.3rem;
+    margin-bottom: 1rem
+}
+
+.title2 p {
+    margin-bottom: 0;
+}
+
+.pub-list-item .tags {
+    margin-bottom: 0.5rem;
+    line-height: 35px;
+}
+
+
+.box {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    padding: 25px;
+    margin-top: -10px;
+}
+
+.blog-text {
+    overflow: hidden;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace;
+    background-color: #f4f4f4;
+    display: block; /* Make the <code> element a block-level element */
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    white-space: pre-wrap; /* Preserve white spaces and line breaks */
+}
+
+blockquote {
+    background-color: #f9f9f9;
+    border-left: 3px solid #333;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-style: italic;
+}
+
+nav {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
+}
+
+code {
+    font-size: 87.5%;
+    color: #e83e8c;
+    word-break: break-word
+}
+
+.badge-dark {
+    color: #fff;
+    background-color: #343a40
+}
+
+a > code {
+    color: inherit
+}
+
+
+.my_container {
+    width: 90% !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.blog_image {
+    object-fit: cover;
+    object-position: 50% 50%;
+    height: auto;
+    width: 100%;
+    border: black 10px;
+}
+
+@media (max-width: 992px) {
+    .hide_small_screen {
+        display: none
+    }
+
+    .portrait {
+        max-width: 350px;
+    !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    html {
+        font-size: calc(1em + 0.3vw);
+    }
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Montserrat, sans-serif;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
+}
+
+
+.title2 {
+    color: #696969;
+}
+
+
+.profile {
+    text-align: center;
+    padding: 10px 0 10px 0;
+    position: relative
+}
+
+.portrait {
+    width: 60%;
+    height: 60%;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.portrait-title h2 {
+    font-size: 1.75em;
+    font-weight: 300;
+    color: #000;
+    margin: 20px 0 10px
+}
+
+.portrait-title h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(0, 0, 0, .54);
+    margin: 0 0 10px
+}
+
+ul.network-icon {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0
+}
+
+.network-icon a {
+    color: gray
+}
+
+#profile .network-icon {
+    margin-top: 30px
+}
+
+.network-icon li {
+    margin-right: 10px
+}
+
+.network-icon li:last-of-type {
+    margin-right: 0
+}
+
+.network-icon li:hover {
+    transform: scale(1.2)
+}
+
+.big-icon {
+    font-size: 2rem
+}
+
+ul.ul-interests li {
+    font-size: .9rem
+}
+
+ul.ul-edu {
+    list-style: none
+}
+
+ul.ul-edu li {
+    position: relative;
+    padding: 0 15px 4px 3px
+}
+
+ul.ul-edu li .description p {
+    margin: 0
+}
+
+ul.ul-edu li .description p.course {
+    font-size: 1rem
+}
+
+p.education_dates, p.notes, ul.ul-edu li .description p.institution {
+    font-size: .75rem;
+    color: rgba(0, 0, 0, .6)
+}
+
+.experience .card-text, .experience .card-text p {
+    color: #000 !important;
+    font-size: .75rem !important
+}
+
+.navigation {
+    color: #2b2b2b;
+    line-height: 1.7;
+    text-transform: none
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #333;
+    font-size: 15px;
+    background: #f8f8f8
+}
+
+.my_badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 200;
+    line-height: 1;
+    font-family: "Gill Sans", sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 5px;
+}
+
+.light_badge {
+    background-color: #e0e0e0;
+    color: #000
+}
+
+.dark_badge {
+    background-color: #000;
+    color: #fff
+}
+
+.tag_badge {
+    background-color: seagreen;
+    color: #fff
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center
+}
+
+.separator {
+    opacity: .3;
+    text-transform: capitalize
+}
+
+.separator::after, .separator::before {
+    content: '';
+    flex: 1;
+    opacity: .5;
+    border-bottom: 1px solid gray
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em
+}
+
+.side-subpanel a {
+    color: #d3d3d3;
+    transition: color .6s ease;
+    text-decoration: none
+}
+
+
